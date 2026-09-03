@@ -1,1 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ranjan Dangol — Aspiring IT Professional specializing in computer networking, backend development, cloud computing and data analysis.">
+  <title>Ranjan Dangol | IT Professional</title>
 
+  <style>
+    :root {
+      --bg: #0b1120;
+      --surface: #111827;
+      --surface-2: #172033;
+      --border: #263449;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #60a5fa;
+      --accent-2: #3b82f6;
+      --white: #ffffff;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+                   "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(var(--max), 90%);
+      margin-inline: auto;
+    }
+
+    nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 1000;
+      background: rgba(11, 17, 32, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(38, 52, 73, .75);
+    }
+
+    .nav-inner {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .brand {
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -.02em;
+    }
+
+    .brand span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 120px 0 80px;
+      background:
+        radial-gradient(circle at 80% 20%, rgba(59,130,246,.14), transparent 30%),
+        radial-gradient(circle at 15% 70%, rgba(96,165,250,.08), transparent 28%);
+    }
+
+    .hero-content { max-width: 850px; }
+
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 13px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: #bfdbfe;
+      background: rgba(17,24,39,.65);
+      font-size: .9rem;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      color: var(--white);
+      font-size: clamp(3.1rem, 8vw, 6.4rem);
+      line-height: .98;
+      letter-spacing: -.065em;
+      margin-bottom: 25px;
+    }
+
+    h1 span { color: var(--accent); }
+
+    .hero-description {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 1.18rem;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 18px;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      transition: transform .2s, border-color .2s, background .2s;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: var(--accent-2);
+      border-color: var(--accent-2);
+      color: white;
+    }
+
+    .btn-primary:hover { background: #2563eb; }
+
+    .btn-secondary:hover { border-color: var(--accent); }
+
+    section { padding: 95px 0; }
+
+    .section-heading { margin-bottom: 42px; }
+
+    .section-label {
+      color: var(--accent);
+      font-size: .85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .13em;
+      margin-bottom: 7px;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      color: var(--white);
+      letter-spacing: -.04em;
+      line-height: 1.15;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 720px;
+      margin-top: 10px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.35fr .65fr;
+      gap: 30px;
+    }
+
+    .card {
+      background: linear-gradient(145deg, rgba(17,24,39,.96), rgba(15,23,42,.92));
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      padding: 28px;
+    }
+
+    .card p { color: var(--muted); }
+
+    .quick-info { display: grid; gap: 0; }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: .94rem;
+    }
+
+    .info-row:last-child { border-bottom: 0; }
+
+    .info-row span:first-child { color: #64748b; }
+    .info-row span:last-child { text-align: right; color: var(--text); }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .skill-card h3,
+    .experience-card h3,
+    .project-card h3 {
+      color: var(--white);
+      margin-bottom: 9px;
+      font-size: 1.1rem;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 15px;
+    }
+
+    .skill {
+      border: 1px solid var(--border);
+      background: rgba(23,32,51,.7);
+      color: #cbd5e1;
+      border-radius: 7px;
+      padding: 6px 10px;
+      font-size: .84rem;
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 20px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      bottom: 10px;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .experience-card {
+      position: relative;
+      margin-left: 35px;
+    }
+
+    .experience-card::before {
+      content: "";
+      position: absolute;
+      left: -31px;
+      top: 29px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 5px var(--bg);
+    }
+
+    .date {
+      display: block;
+      color: var(--accent);
+      font-size: .86rem;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .organization {
+      color: #cbd5e1;
+      font-weight: 600;
+      margin-bottom: 9px;
+    }
+
+    .muted { color: var(--muted); }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .project-number {
+      color: var(--accent);
+      font-weight: 800;
+      font-size: .85rem;
+      margin-bottom: 13px;
+    }
+
+    .project-meta {
+      display: inline-block;
+      margin-top: 17px;
+      color: #93c5fd;
+      font-size: .86rem;
+    }
+
+    .education-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .education-card h3 { color: var(--white); margin-bottom: 6px; }
+
+    .contact-box {
+      text-align: center;
+      padding: 55px 25px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background:
+        radial-gradient(circle at center, rgba(59,130,246,.10), transparent 55%),
+        var(--surface);
+    }
+
+    .contact-box p {
+      max-width: 650px;
+      margin: 14px auto 26px;
+      color: var(--muted);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+      color: #64748b;
+      text-align: center;
+      font-size: .9rem;
+    }
+
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      .about-grid,
+      .skills-grid,
+      .projects-grid { grid-template-columns: 1fr; }
+      section { padding: 75px 0; }
+      .hero { min-height: 92vh; }
+      .info-row { align-items: flex-start; flex-direction: column; gap: 2px; }
+      .info-row span:last-child { text-align: left; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="container nav-inner">
+      <a class="brand" href="#top">Ranjan<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="container">
+      <div class="hero-content">
+        <div class="eyebrow">IT Professional • Networking • Backend Development • Data Analysis</div>
+        <h1>Hi, I'm <span>Ranjan Dangol.</span></h1>
+        <p class="hero-description">
+          An aspiring IT professional with experience and interests spanning
+          computer networking, backend development, data analysis and cloud computing.
+          I am focused on continuous learning and contributing to growth-oriented
+          technology environments.
+        </p>
+        <div class="buttons">
+          <a class="btn btn-primary" href="#projects">View My Work</a>
+          <a class="btn btn-secondary" href="mailto:ranjan12dangol@gmail.com">Email Me</a>
+          <a class="btn btn-secondary" href="tel:+9779746464848">Call Me</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-label">About</div>
+          <h2>Building knowledge through technology.</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="card">
+            <p>
+              I am an aspiring IT professional with a background in Computer Science
+              and Information Technology. My professional interests include computer
+              networking, backend development, data analysis and cloud computing.
+            </p>
+            <br>
+            <p>
+              I value continuous learning, a logical and methodical approach to
+              problem-solving, teamwork and delivering tasks with quality and discipline.
+              My goal is to keep developing practical skills while contributing
+              meaningfully in a dynamic IT environment.
+            </p>
+          </div>
+
+          <div class="card quick-info">
+            <div class="info-row"><span>Location</span><span>Lalitpur, Nepal</span></div>
+            <div class="info-row"><span>Focus</span><span>IT & Technology</span></div>
+            <div class="info-row"><span>Networking</span><span>CCNA Knowledge</span></div>
+            <div class="info-row"><span>Cloud</span><span>AWS</span></div>
+            <div class="info-row"><span>GitHub</span><span>ranjan-dangol</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-label">Skills</div>
+          <h2>Technical toolkit.</h2>
+          <p class="section-intro">
+            Technologies and areas listed in my professional CV.
+          </p>
+        </div>
+
+        <div class="skills-grid">
+          <div class="card skill-card">
+            <h3>Programming & Web</h3>
+            <p class="muted">Programming languages and web technologies.</p>
+            <div class="skill-list">
+              <span class="skill">C</span><span class="skill">C++</span>
+              <span class="skill">C#</span><span class="skill">Python</span>
+              <span class="skill">PL/SQL</span><span class="skill">HTML</span>
+              <span class="skill">CSS</span><span class="skill">Java</span>
+            </div>
+          </div>
+
+          <div class="card skill-card">
+            <h3>Data, AI & Visualization</h3>
+            <p class="muted">Libraries and tools used for analysis and machine learning.</p>
+            <div class="skill-list">
+              <span class="skill">NumPy</span><span class="skill">Pandas</span>
+              <span class="skill">Matplotlib</span><span class="skill">Seaborn</span>
+              <span class="skill">Scikit-Learn</span><span class="skill">TensorFlow</span>
+              <span class="skill">Keras</span><span class="skill">PyTorch</span>
+              <span class="skill">OpenCV</span><span class="skill">SQL</span>
+            </div>
+          </div>
+
+          <div class="card skill-card">
+            <h3>Cloud & Networking</h3>
+            <p class="muted">Cloud services and networking knowledge.</p>
+            <div class="skill-list">
+              <span class="skill">AWS</span><span class="skill">EC2</span>
+              <span class="skill">S3</span><span class="skill">IAM</span>
+              <span class="skill">Cisco Packet Tracer</span><span class="skill">DHCP</span>
+              <span class="skill">Static IP</span><span class="skill">CCNA</span>
+            </div>
+          </div>
+
+          <div class="card skill-card">
+            <h3>Tools & Development</h3>
+            <p class="muted">Development, version-control and productivity tools.</p>
+            <div class="skill-list">
+              <span class="skill">Git</span><span class="skill">GitHub</span>
+              <span class="skill">Postman</span><span class="skill">Figma</span>
+              <span class="skill">Microsoft Word</span><span class="skill">PowerPoint</span>
+              <span class="skill">Excel</span><span class="skill">Project</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-label">Experience</div>
+          <h2>Professional experience & training.</h2>
+        </div>
+
+        <div class="timeline">
+          <article class="card experience-card">
+            <span class="date">10 August 2025 – 10 April 2026</span>
+            <h3>Assistant Wireless Network Job</h3>
+            <div class="organization">Subisu Cablenet Limited — Wireless Operations Department</div>
+            <p class="muted">Baluwatar, Kathmandu</p>
+          </article>
+
+          <article class="card experience-card">
+            <span class="date">2 May 2025 – 1 August 2025</span>
+            <h3>Computer Networking Intern</h3>
+            <div class="organization">Dusit Princess</div>
+            <p class="muted">Lazimpat, Kathmandu</p>
+          </article>
+
+          <article class="card experience-card">
+            <span class="date">2025</span>
+            <h3>IT Internship</h3>
+            <div class="organization">Samasta Groups Pvt. Ltd.</div>
+            <p class="muted">In collaboration with Kathford International College of Engineering and Management, affiliated to Tribhuvan University.</p>
+          </article>
+
+          <article class="card experience-card">
+            <span class="date">2024</span>
+            <h3>Python with Data Science</h3>
+            <div class="organization">VOLVE IT HUB NEPAL</div>
+            <p class="muted">Training in collaboration with Kathford International College of Engineering and Management, affiliated to Tribhuvan University.</p>
+          </article>
+
+          <article class="card experience-card">
+            <span class="date">2023</span>
+            <h3>UI/UX Design</h3>
+            <div class="organization">DURSIKSHYA Transforming Education</div>
+            <p class="muted">Training in collaboration with Kathford International College of Engineering and Management, affiliated to Tribhuvan University.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-label">Projects & Publications</div>
+          <h2>Selected academic work.</h2>
+          <p class="section-intro">
+            Projects and publications documented in my CV.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="card project-card">
+            <div class="project-number">01 / PUBLICATION</div>
+            <h3>Samasta News / Khabar — Backend Development</h3>
+            <p class="muted">
+              Black Book Thesis Report based on an eight-semester backend development
+              internship at Samasta Groups Pvt. Ltd.
+            </p>
+            <span class="project-meta">Author: Ranjan Dangol • 51 pages • 2025</span>
+          </article>
+
+          <article class="card project-card">
+            <div class="project-number">02 / GROUP PROJECT</div>
+            <h3>TubeSentiment — YouTube Comment Analyzer</h3>
+            <p class="muted">
+              Black Book Thesis Report on a seventh-semester group project focused on
+              analyzing YouTube comments.
+            </p>
+            <span class="project-meta">Ranjan Dangol • Karishma Karki • Sanjita K.C. • 48 pages • 2025</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-label">Education</div>
+          <h2>Academic background.</h2>
+        </div>
+
+        <div class="education-grid">
+          <article class="card education-card">
+            <h3>Bachelor of Science in Computer Science and Information Technology</h3>
+            <p class="muted">
+              Kathford International College of Engineering and Management,
+              affiliated to Tribhuvan University — Balkumari, Lalitpur, Nepal.
+            </p>
+          </article>
+
+          <article class="card education-card">
+            <h3>Higher Secondary School</h3>
+            <p class="muted">
+              D. A. V. Sushil Kedia Vishwa Bharati Higher Secondary School —
+              Jawalakhel, Lalitpur, Nepal.
+            </p>
+          </article>
+
+          <article class="card education-card">
+            <h3>Secondary School</h3>
+            <p class="muted">
+              Future Stars High School — Jawalakhel, Lalitpur, Nepal.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <div class="section-label">Contact</div>
+          <h2>Let's connect.</h2>
+          <p>
+            Interested in IT, networking, backend development, cloud computing
+            or technology? Feel free to get in touch.
+          </p>
+          <div class="buttons" style="justify-content:center;">
+            <a class="btn btn-primary" href="mailto:ranjan12dangol@gmail.com">ranjan12dangol@gmail.com</a>
+            <a class="btn btn-secondary" href="https://github.com/ranjan-dangol" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Ranjan Dangol. Built with HTML & CSS.
+    </div>
+  </footer>
+
+</body>
+</html>
